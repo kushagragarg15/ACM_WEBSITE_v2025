@@ -31,7 +31,7 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className="min-h-fit w-screen text-white dark:text-gray-100">
+		<div className="min-h-screen bg-[#020B05] dark:bg-[#e8e7c9] text-white dark:text-gray-100">
 			<Hero />
 			<motion.div
 				className="flex justify-center overflow-hidden mr-3"
@@ -52,7 +52,7 @@ export default function Home() {
 					/>
 				)}
 			</motion.div>
-			<div className="flex flex-col gap-16 mt-10">
+			<div className="flex flex-col gap-16 mt-10 pb-20">
 				<Card k={0} p={pic} para1={acmInfo} para2={acmMotto} />
 				<Card k={1} p={sir} para1={acmPara} />
 			</div>
