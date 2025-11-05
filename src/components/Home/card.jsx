@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import glow2 from "../../assets/glow2.png";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export default function Card({ k, p, para1, para2 }) {
   const [isInView, setIsInView] = useState(false);

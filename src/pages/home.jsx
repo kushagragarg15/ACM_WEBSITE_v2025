@@ -1,6 +1,6 @@
 import glow from "../assets/glow.png";
 import glow_light from "../assets/glow_light.png";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import Hero from "../components/Home/hero.jsx";
 import Card from "../components/Home/card.jsx";
 import pic from "../assets/pic.png";
