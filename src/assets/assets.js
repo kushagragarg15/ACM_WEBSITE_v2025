@@ -74,6 +74,7 @@ export const teamMembers = [
     designation: "Chairperson",
     techStack: ["Leadership", "Management"],
     Handles: ["twitter", "linkedin", "github"],
+    isLeadership: true,
   },
   {
     _id: "mem2",
@@ -82,6 +83,7 @@ export const teamMembers = [
     designation: "Vice Chairperson",
     techStack: ["WEBD", "AI/ML"],
     handles: ["twitter", "linkedin", "github"],
+    isLeadership: true,
   },
   {
     _id: "mem3",
@@ -90,6 +92,7 @@ export const teamMembers = [
     designation: "Treasurer",
     techStack: ["Finance", "Operations"],
     Handles: ["twitter", "linkedin", "github"],
+    isLeadership: true,
   },
   {
     _id: "mem4",
@@ -98,6 +101,44 @@ export const teamMembers = [
     designation: "Secretary",
     techStack: ["Documentation", "Communication"],
     handles: ["twitter", "linkedin", "github"],
+    isLeadership: true,
+  },
+  // Additional team members
+  {
+    _id: "mem5",
+    name: "Technical Head",
+    image: aviraj,
+    designation: "Technical Lead",
+    techStack: ["Full Stack", "DevOps"],
+    handles: ["twitter", "linkedin", "github"],
+    isLeadership: false,
+  },
+  {
+    _id: "mem6",
+    name: "Event Coordinator",
+    image: ronit,
+    designation: "Events Manager",
+    techStack: ["Event Planning", "Coordination"],
+    handles: ["twitter", "linkedin", "github"],
+    isLeadership: false,
+  },
+  {
+    _id: "mem7",
+    name: "Marketing Head",
+    image: vaibhav,
+    designation: "Marketing Lead",
+    techStack: ["Digital Marketing", "Design"],
+    handles: ["twitter", "linkedin", "github"],
+    isLeadership: false,
+  },
+  {
+    _id: "mem8",
+    name: "Content Manager",
+    image: aviraj,
+    designation: "Content Lead",
+    techStack: ["Content Writing", "Social Media"],
+    handles: ["twitter", "linkedin", "github"],
+    isLeadership: false,
   },
 ];
 
