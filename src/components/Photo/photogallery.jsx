@@ -2,6 +2,7 @@
 import { imageAssets } from "../../assets/assets";
 import Marquee from "react-fast-marquee";
 import BackgroundGradient from "../ui/background-gradient";
+import Button from "../button";
 
 const fallbackImage = "path/to/fallback/image.jpg"; // Replace with your fallback image path
 

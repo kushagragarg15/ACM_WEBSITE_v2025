@@ -1,6 +1,6 @@
 import { teamMembers } from '../../assets/assets.js';
 import Button from '../button.jsx';
-import { EvervaultCard }from '../ui/evervault-card.jsx'
+import { EvervaultCard } from '../ui/evervault-card.jsx'
 
 const Team = () => {
   return (
@@ -32,7 +32,7 @@ const Team = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    
+
                     {/* Content */}
                     <div className="flex-1 flex flex-col justify-between">
                       <div>
@@ -43,7 +43,7 @@ const Team = () => {
                           {item.designation}
                         </p>
                       </div>
-                      
+
                       {/* Tech Stack */}
                       <div className="flex flex-wrap gap-2">
                         {item.techStack.map((tech, idx) => (
