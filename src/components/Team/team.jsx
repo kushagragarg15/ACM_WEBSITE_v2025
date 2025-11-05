@@ -9,16 +9,16 @@ const Team = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 dark:from-gray-800 dark:via-gray-600 dark:to-gray-800 bg-clip-text text-transparent mb-4">
-            Our Team
+            Leadership Team 2025
           </h2>
           <p className="text-xl text-slate-300 dark:text-gray-600 max-w-2xl mx-auto">
-            Meet the passionate individuals driving innovation and excellence in our ACM chapter
+            Meet our dedicated leadership team driving innovation and excellence in ACM LNMIIT
           </p>
         </div>
 
         {/* Team Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {teamMembers.slice(0, 3).map((item, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {teamMembers.map((item, index) => (
             <div key={index} className="group">
               <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-500/20 via-blue-500/20 to-purple-500/20 p-1 backdrop-blur-sm">
                 <EvervaultCard className="w-full h-[400px] dark:bg-gradient-to-b dark:from-[#fbfbd3] dark:to-[#f0e9ba] bg-gradient-to-b from-[#1F2321] to-[#020B05] rounded-2xl">

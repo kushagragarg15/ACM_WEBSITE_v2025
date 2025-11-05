@@ -69,27 +69,35 @@ export const assets = {
 export const teamMembers = [
   {
     _id: "mem1",
-    name: "Vaibhav Khamesra",
-    image: vaibhav,
+    name: "Yashi Srivastava",
+    image: vaibhav, // Using existing image as placeholder - replace with actual image later
     designation: "Chairperson",
-    techStack: ["WEBD", "AI/ML"],
+    techStack: ["Leadership", "Management"],
     Handles: ["twitter", "linkedin", "github"],
   },
   {
     _id: "mem2",
-    name: "Ronit Gupta",
-    image: ronit,
-    designation: "Secretary",
-    techStack: ["WEBD", "BACKEND"],
+    name: "Kushagra Garg",
+    image: aviraj, // Using existing image as placeholder - replace with actual image later
+    designation: "Vice Chairperson",
+    techStack: ["WEBD", "AI/ML"],
     handles: ["twitter", "linkedin", "github"],
   },
   {
     _id: "mem3",
-    name: "Aviraj Vijay Deshmukh",
-    image: aviraj,
-    designation: "Vice Chairperson",
-    techStack: ["WEBD", "AI/ML"],
+    name: "Nikhil Gupta",
+    image: ronit, // Using existing image as placeholder - replace with actual image later
+    designation: "Treasurer",
+    techStack: ["Finance", "Operations"],
     Handles: ["twitter", "linkedin", "github"],
+  },
+  {
+    _id: "mem4",
+    name: "Mainak Das",
+    image: vaibhav, // Using existing image as placeholder - replace with actual image later
+    designation: "Secretary",
+    techStack: ["Documentation", "Communication"],
+    handles: ["twitter", "linkedin", "github"],
   },
 ];
 
