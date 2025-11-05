@@ -33,9 +33,36 @@ export default function NavBar({ isOpen, setOpen }) {
 		);
 	};
 
-	const getPath = (title) => {
-		const path = title.toLowerCase().replace(/\s+/g, "");
-		return path === "home" ? "/" : `/${path}`;
+	const scrollToSection = (title) => {
+		const sectionId = title.toLowerCase().replace(/\s+/g, "");
+		const element = document.getElementById(sectionId);
+		
+		if (element) {
+			const navHeight = 80; // Account for fixed navbar height
+			const elementPosition = element.offsetTop - navHeight;
+			
+			window.scrollTo({
+				top: elementPosition,
+				behavior: 'smooth'
+			});
+		}
+	};
+
+	const handleNavClick = (title) => {
+		if (title === "Blog") {
+			// Blog is a separate page, use routing
+			window.location.href = "/blog";
+		} else {
+			// All other sections are on the home page
+			if (window.location.pathname !== "/") {
+				// If not on home page, navigate to home first then scroll
+				window.location.href = "/";
+				setTimeout(() => scrollToSection(title), 100);
+			} else {
+				// Already on home page, just scroll
+				scrollToSection(title);
+			}
+		}
 	};
 
 	return (
@@ -66,12 +93,12 @@ export default function NavBar({ isOpen, setOpen }) {
 									initial={{ opacity: 0, y: -10 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ delay: 0.4 + i * 0.1 }}>
-									<Link
-										to={getPath(title)}
+									<button
+										onClick={() => handleNavClick(title)}
 										className="text-slate-200 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-white/10 dark:hover:bg-gray-700/20 relative group">
 										{title}
 										<span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-green-400 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-									</Link>
+									</button>
 								</motion.div>
 							))}
 						</div>
