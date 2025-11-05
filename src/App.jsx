@@ -24,38 +24,36 @@ function App() {
 			<div className="relative overflow-x-hidden">
 				<NavBar isOpen={isOpen} setOpen={setOpen} />
 				{isOpen && (
-					<div className="fixed inset-0 bg-black bg-opacity-70 sm:hidden backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-						<div className="w-full h-full dark:bg-[#f0e9ba] bg-zinc-900 rounded-lg">
-							<div className="flex flex-col text-white dark:text-zinc-900 text-xl font-semibold justify-center items-center gap-12 h-full">
-								<div
-									onClick={() => setOpen(false)}
-									className="border-2 border-white dark:border-zinc-900 px-4 rounded-full p-2 hover:bg-white/10 dark:hover:bg-zinc-900/10 cursor-pointer transition-colors">
-									Close
+					<div className="fixed inset-0 bg-black/80 md:hidden backdrop-blur-md z-50 flex items-center justify-center p-4">
+						<div className="w-full max-w-sm bg-[#020B05]/95 dark:bg-[#f0e9ba]/95 backdrop-blur-md rounded-2xl border border-white/10 dark:border-gray-700/30 p-8">
+							<div className="flex flex-col space-y-6">
+								<div className="flex justify-between items-center mb-4">
+									<h3 className="text-xl font-bold text-white dark:text-gray-800">Menu</h3>
+									<button
+										onClick={() => setOpen(false)}
+										className="p-2 rounded-lg hover:bg-white/10 dark:hover:bg-gray-700/20 transition-colors">
+										<span className="text-white dark:text-gray-800">✕</span>
+									</button>
 								</div>
-								<Link onClick={() => setOpen(false)} to="/">
-									Home
-								</Link>
-								<Link onClick={() => setOpen(false)} to="/aboutus">
-									About Us
-								</Link>
-								<Link onClick={() => setOpen(false)} to="/blog">
-									Blog
-								</Link>
-								<Link onClick={() => setOpen(false)} to="/gallery">
-									Gallery
-								</Link>
-								<Link onClick={() => setOpen(false)} to="/events">
-									Events
-								</Link>
-								<Link onClick={() => setOpen(false)} to="/membership">
-									Membership
-								</Link>
-								<Link onClick={() => setOpen(false)} to="/team">
-									Team
-								</Link>
-								<Link onClick={() => setOpen(false)} to="/contactus">
-									Contact Us
-								</Link>
+								
+								{[
+									{ name: "Home", path: "/" },
+									{ name: "About Us", path: "/aboutus" },
+									{ name: "Blog", path: "/blog" },
+									{ name: "Gallery", path: "/gallery" },
+									{ name: "Events", path: "/events" },
+									{ name: "Membership", path: "/membership" },
+									{ name: "Team", path: "/team" },
+									{ name: "Contact Us", path: "/contactus" }
+								].map((item, index) => (
+									<Link
+										key={index}
+										onClick={() => setOpen(false)}
+										to={item.path}
+										className="block px-4 py-3 text-white dark:text-gray-800 hover:bg-white/10 dark:hover:bg-gray-700/20 rounded-lg transition-all duration-300 font-medium">
+										{item.name}
+									</Link>
+								))}
 							</div>
 						</div>
 					</div>

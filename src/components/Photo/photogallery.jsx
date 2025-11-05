@@ -7,49 +7,70 @@ const fallbackImage = "path/to/fallback/image.jpg"; // Replace with your fallbac
 
 const PhotoGallery = () => {
   return (
-    <div className="w-full mt-14 pt-10 text-black bg-gradient-to-b from-[#1F2321] to-[#020B05] dark:text-white  dark:bg-gradient-to-b dark:from-[#fbfbd3] dark:to-[#f0e9ba] py-10 px-5">
-      <div className="w-full mx-auto">
-        <div>
-          <h2 className="bg-gradient-to-b from-[#F1F1EF] via-slate-100 to-[#f1f1ef8d] dark:bg-gradient-to-b dark:from-[#020B05] dark:via-slate-900 dark:to-[#020B058d] bg-clip-text text-transparent text-center text-4xl sm:text3xl font-bold">Photos</h2>
-          <p className="text-center text-[#F1F1EF99] dark:text-[#020B0599] mb-10 text-sm sm:text-base">
-            Here are some photos of our events
+    <div className="py-20 bg-gradient-to-b from-[#1F2321] to-[#020B05] dark:from-[#fbfbd3] dark:to-[#f0e9ba] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 dark:from-gray-800 dark:via-gray-600 dark:to-gray-800 bg-clip-text text-transparent mb-4">
+            Event Gallery
+          </h2>
+          <p className="text-xl text-slate-300 dark:text-gray-600 max-w-2xl mx-auto">
+            Capturing moments of innovation, learning, and community building
           </p>
         </div>
 
-        <div>
+        {/* Gallery Marquees */}
+        <div className="space-y-8">
           {/* First marquee */}
-          <div>
-            <Marquee pauseOnHover="true" speed={150}>
+          <div className="relative">
+            <Marquee pauseOnHover speed={80} gradient={false}>
               {imageAssets.slice(0, 6).map((item, index) => (
-                <BackgroundGradient key={index}>
-                  <div className="relative group overflow-hidden shadow-lg mx-4 sm:mx-8">
-                    <img
-                      className="h-32 w-56 sm:h-40 sm:w-72 md:h-48 md:w-80 lg:h-56 lg:w-96 object-cover"
-                      src={item.image || fallbackImage}
-                      alt={`Event ${index + 1}`}
-                    />
-                  </div>
-                </BackgroundGradient>
+                <div key={index} className="mx-4">
+                  <BackgroundGradient className="rounded-2xl p-1">
+                    <div className="relative group overflow-hidden rounded-2xl bg-black/20 backdrop-blur-sm">
+                      <img
+                        className="h-48 w-80 md:h-56 md:w-96 object-cover transition-all duration-500 group-hover:scale-110"
+                        src={item.image || fallbackImage}
+                        alt={`Event ${index + 1}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className="text-sm font-medium">Event Highlight</p>
+                      </div>
+                    </div>
+                  </BackgroundGradient>
+                </div>
               ))}
             </Marquee>
           </div>
 
           {/* Second marquee */}
-          <div className="mt-7 flex">
-            <Marquee direction="right" pauseOnHover="true" speed={150}>
+          <div className="relative">
+            <Marquee direction="right" pauseOnHover speed={80} gradient={false}>
               {imageAssets.slice(6, 12).map((item, index) => (
-                <BackgroundGradient key={index}>
-                  <div className="relative overflow-hidden shadow-lg mx-4 sm:mx-8">
-                    <img
-                      className="h-32 w-56 sm:h-40 sm:w-72 md:h-48 md:w-80 lg:h-56 lg:w-96 object-cover hover:scale-105 transition-transform"
-                      src={item.image || fallbackImage}
-                      alt={`Event ${index + 7}`}
-                    />
-                  </div>
-                </BackgroundGradient>
+                <div key={index} className="mx-4">
+                  <BackgroundGradient className="rounded-2xl p-1">
+                    <div className="relative group overflow-hidden rounded-2xl bg-black/20 backdrop-blur-sm">
+                      <img
+                        className="h-48 w-80 md:h-56 md:w-96 object-cover transition-all duration-500 group-hover:scale-110"
+                        src={item.image || fallbackImage}
+                        alt={`Event ${index + 7}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className="text-sm font-medium">Community Moment</p>
+                      </div>
+                    </div>
+                  </BackgroundGradient>
+                </div>
               ))}
             </Marquee>
           </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <Button text="View Full Gallery" variant="outline" />
         </div>
       </div>
     </div>

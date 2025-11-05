@@ -3,76 +3,120 @@ import glow2 from "../../assets/glow2.png";
 import { motion } from "motion/react";
 
 export default function Card({ k, p, para1, para2 }) {
-  const [showBounce, setShowBounce] = useState(true);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowBounce(false);
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const cardPosition = scrollY + windowHeight * 0.8;
+      
+      if (cardPosition > 400) {
+        setIsInView(true);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <motion.div
-      animate={{
-        y: [0, showBounce ? 0 : 0, 0],
-      }}
-      transition={{
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 1.5,
-      }}
-      className="flex overflow-hidden border-0 w-[70vw] max-sm:h-[50vh] max-sm:w-[75vw] h-[75vh] p-1 mx-auto rounded-[2.1rem] bg-gradient-to-r from-green-300 via-green-600 to-yellow-600 "
-    >
-      <div
-        className={`bg-[#020B05] dark:bg-[#FFFEDD] h-full w-full border-0 rounded-[2.1rem] flex  ${
-          k ? "flex-col-reverse justify-end" : " flex-col justify-end"
-        }`}
-      >
-        <div
-          className={`flex font-semibold max-sm:text-[2rem] text-[4rem] px-16 max-sm:px-4 mb-12 max-sm:mb-1.5 bg-gradient-to-r from-[#c4c4c2] to-[#f1f1ef8d] dark:bg-gradient-to-r dark:from-[#2b2b2b] dark:to-[#7e7e7e8d] bg-clip-text text-transparent ${
-            k ? "hidden" : ""
-          }`}
-        >
-          About Us
-        </div>
-        <div
-          className={`flex max-sm:flex-col-reverse max-sm:items-center w-full px-12 max-sm:px-2 max-sm:mb-1 max justify-between ${
-            k ? "" : "-mb-24"
-          }`}
-        >
-          <p className="text-white dark:text-gray-900 pt-2 text-[1.2rem] max-sm:text-[0.5rem] opacity-70 w-[50%] max-sm:w-full max-sm:-mb-5">
-            {para1}
-            <br></br>
-            <br></br>
-            {para2}
-          </p>
-          <div
-            className={`flex w-[40%] max-sm:w-[60%] max-sm:mb-1 border-0 rounded-2xl overflow-hidden ${
-              k ? "-mt-12" : ""
-            }`}
-          >
-            <img className="object-fill" src={p}></img>
+      initial={{ opacity: 0, y: 100 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative max-w-6xl mx-auto px-4 mb-20">
+      
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-500/20 via-blue-500/20 to-purple-500/20 p-1 backdrop-blur-sm">
+        <div className="bg-[#020B05]/95 dark:bg-[#FFFEDD]/95 backdrop-blur-md rounded-3xl overflow-hidden">
+          
+          {/* Header Section */}
+          {!k && (
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="px-8 md:px-16 pt-12 pb-8">
+              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 dark:from-gray-800 dark:via-gray-600 dark:to-gray-800 bg-clip-text text-transparent">
+                About Us
+              </h2>
+            </motion.div>
+          )}
+
+          {k && (
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="px-8 md:px-16 pt-12 pb-8">
+              <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 dark:from-gray-800 dark:via-gray-600 dark:to-gray-800 bg-clip-text text-transparent leading-tight">
+                Meet Our Chapter's<br />Faculty Mentor
+              </h2>
+            </motion.div>
+          )}
+
+          {/* Content Section */}
+          <div className={`flex flex-col ${k ? 'lg:flex-col-reverse' : 'lg:flex-row'} items-center gap-8 px-8 md:px-16 pb-16`}>
+            
+            {/* Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: k ? 50 : -50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: k ? 50 : -50 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex-1 space-y-6">
+              
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <p className="text-slate-300 dark:text-gray-700 leading-relaxed text-lg">
+                  {para1}
+                </p>
+                {para2 && (
+                  <p className="text-slate-300 dark:text-gray-700 leading-relaxed text-lg mt-4">
+                    {para2}
+                  </p>
+                )}
+              </div>
+            </motion.div>
+
+            {/* Image Section */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex-1 max-w-md">
+              
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 dark:border-gray-700/30">
+                  <img 
+                    className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" 
+                    src={p} 
+                    alt={k ? "Faculty Mentor" : "About ACM"}
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </div>
-        <div
-          className={`flex font-semibold text-[4rem] dark:bg-gradient-to-r dark:from-[#2b2b2b] dark:to-[#7e7e7e8d] max-sm:pt-[7rem] max-sm:px-4 max-sm:text-[1.7rem] pl-12 mb-12 bg-gradient-to-r from-[#c4c4c2] to-[#9d9d9d8d] bg-clip-text text-transparent ${
-            k ? "-mt-40" : "hidden"
-          }`}
-        >
-          Meet Our Chapter's
-          <br /> Faculty Mentor
-        </div>
-        <div className={`flex relative ${!k ? "" : "rotate-180"}`}>
-          <img className="object-fill" src={glow2}></img>
+
+          {/* Background Glow Effect */}
+          <div className="absolute inset-0 pointer-events-none">
+            <motion.div
+              animate={{ 
+                opacity: [0.1, 0.3, 0.1],
+                scale: [1, 1.1, 1]
+              }}
+              transition={{ 
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className={`absolute ${k ? 'top-0' : 'bottom-0'} left-1/2 transform -translate-x-1/2 w-full h-1/2`}>
+              <img 
+                className={`w-full h-full object-cover opacity-20 ${k ? 'rotate-180' : ''}`} 
+                src={glow2} 
+                alt="Glow effect"
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
     </motion.div>
